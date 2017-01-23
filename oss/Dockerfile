@@ -28,6 +28,12 @@ ENV JAVA_VERSION_MAJOR 8
 ENV JAVA_VERSION_MINOR 102
 ENV JAVA_VERSION_BUILD 14
 
+ENV http_proxy http://proxy.wincor-nixdorf.com:81
+ENV https_proxy http://proxy.wincor-nixdorf.com:81
+RUN echo "proxy=http://proxy.wincor-nixdorf.com:81" >> /etc/yum.conf
+RUN echo "timeout=500" >> /etc/yum.conf
+RUN echo "minrate=1" >> /etc/yum.conf
+
 RUN yum install -y \
   curl tar createrepo \
   && yum clean all
